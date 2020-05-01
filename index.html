@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Sault Ste. Marie Recreation Areas</title>
+  <meta name="description" content="An interactive map of the City's recreation areas" />
+  <meta name="author" content="The Corporation of the City of Sault Ste. Marie" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css" integrity="sha256-qS+snwBgqr+iFVpBB58C9UCxKFhyL03YHpZfdNUhSEw=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.min.css">
+
+</head>
+
+<body>
+
+  <nav class="navbar is-dark" role="navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        City of Sault Ste. Marie Recreation Areas
+      </div>
+      <a class="navbar-burger" id="is-navbar-toggle-button" role="button" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu is-active" id="is-navbar-toggle-section">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <form id="is-search-string-form">
+            <div class="field">
+              <div class="control has-icons-left">
+                <input class="input" id="is-search-string" type="text" placeholder="Find a recreation area" aria-label="Search Recreation Areas" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="navbar-item">
+          <button class="button is-rounded is-info" type="button">Browse</button>
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <button class="button is-rounded is-primary" type="button">Use My Location</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="map-container" role="main"></main>
+
+  <div class="modal" id="is-tag-browser-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      test content
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <script>
+    window.exports = window.exports || {};
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js" integrity="sha256-fNoRrwkP2GuYPbNSJmMJOCyfRB2DhPQe0rGTgzRsyso=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/esri-leaflet/2.4.0/esri-leaflet.js" integrity="sha256-XvDKNWL03bsrXIZC7gdIMVdFn3BHJpg2m4c/b/E2a3w=" crossorigin="anonymous"></script>
+  <script src="js/mapData.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
