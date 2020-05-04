@@ -43,7 +43,7 @@
           </form>
         </div>
         <div class="navbar-item">
-          <button class="button is-rounded is-info" type="button">Browse</button>
+          <button class="button is-rounded is-info" id="is-tag-browser-toggle-button" type="button">Browse</button>
         </div>
       </div>
       <div class="navbar-end">
@@ -59,7 +59,24 @@
   <div class="modal" id="is-tag-browser-modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-      test content
+      <div class="has-background-white" style="overflow:auto">
+        <div class="tags is-marginless" id="is-tag-cloud-container"></div>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <div class="modal" id="is-no-search-results-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="message is-info">
+        <header class="message-header">
+          No Search Results
+        </header>
+        <section class="message-body">
+          Try searching for something else.
+        </section>
+      </div>
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
   </div>

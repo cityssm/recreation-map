@@ -5,6 +5,7 @@ export declare type RecreationData = {
 export declare type RecreationArea = {
     areaName: string;
     areaDescriptionHTML?: string;
+    locationDescription: string;
     geocoordinates: [number, number];
     tags: string[];
     keywords?: string;
