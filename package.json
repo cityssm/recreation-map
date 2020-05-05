@@ -16,8 +16,7 @@
     "url": "https://github.com/cityssm/recreation-map/issues"
   },
   "homepage": "https://github.com/cityssm/recreation-map#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/esri-leaflet": "^2.1.5",
     "@types/leaflet": "^1.5.12"

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css" integrity="sha256-qS+snwBgqr+iFVpBB58C9UCxKFhyL03YHpZfdNUhSEw=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-fa-markers@0.1.0/L.Icon.FontAwesome.css" />
   <link rel="stylesheet" href="css/style.min.css">
 
 </head>
@@ -22,7 +23,7 @@
       <div class="navbar-item">
         City of Sault Ste. Marie Recreation Areas
       </div>
-      <a class="navbar-burger" id="is-navbar-toggle-button" role="button" aria-label="menu" aria-expanded="false">
+      <a class="navbar-burger is-active" id="is-navbar-toggle-button" role="button" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -32,24 +33,36 @@
       <div class="navbar-start">
         <div class="navbar-item">
           <form id="is-search-string-form">
-            <div class="field">
-              <div class="control has-icons-left">
+            <div class="field has-addons">
+              <div class="control is-expanded has-icons-left">
                 <input class="input" id="is-search-string" type="text" placeholder="Find a recreation area" aria-label="Search Recreation Areas" />
                 <span class="icon is-small is-left">
                   <i class="fas fa-search" aria-hidden="true"></i>
                 </span>
               </div>
+              <div class="control">
+                <button class="button is-primary" type="submit">
+                  Search
+                </button>
+              </div>
+              <div class="control">
+                <button class="button is-info" type="reset">
+                  Show All
+                </button>
+              </div>
             </div>
           </form>
         </div>
-        <div class="navbar-item">
-          <button class="button is-rounded is-info" id="is-tag-browser-toggle-button" type="button">Browse</button>
-        </div>
+          <a class="navbar-item" id="is-tag-browser-toggle-button" role="button" href="#">
+            <span class="icon"><i class="fas fa-tag" aria-hidden="true"></i></span>
+            <span>Find by Feature</span>
+          </a>
       </div>
       <div class="navbar-end">
-        <div class="navbar-item">
-          <button class="button is-rounded is-primary" type="button">Use My Location</button>
-        </div>
+        <a class="navbar-item" id="is-current-location-button" role="button" href="#">
+          <span class="icon"><i class="fas fa-map-pin" aria-hidden="true"></i></span>
+          <span>Show My Location</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -87,6 +100,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js" integrity="sha256-fNoRrwkP2GuYPbNSJmMJOCyfRB2DhPQe0rGTgzRsyso=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/esri-leaflet/2.4.0/esri-leaflet.js" integrity="sha256-XvDKNWL03bsrXIZC7gdIMVdFn3BHJpg2m4c/b/E2a3w=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet-fa-markers@0.1.0/L.Icon.FontAwesome.js"></script>
   <script src="js/mapData.js"></script>
   <script src="js/main.js"></script>
 </body>

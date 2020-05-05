@@ -1,6 +1,10 @@
 "use strict";
 exports.__esModule = true;
 (function () {
+    var map = L.map("map-container")
+        .setView([46.50053, -84.299119], 13);
+    map.setMaxZoom(17);
+    L.esri.basemapLayer("Topographic").addTo(map);
     var marker_currentLocation;
     var markers_searchResults = [];
     function clearSearchMarkersFn() {
@@ -12,15 +16,45 @@ exports.__esModule = true;
     }
     function createAndAddSearchMarkerFn(recArea) {
         var marker = L.marker(recArea.geocoordinates, {
-            alt: recArea.areaName
+            alt: recArea.areaName,
+            icon: L.icon.fontAwesome({
+                iconClasses: "fas fa-tree",
+                markerColor: "#00d1b2",
+                markerFillOpacity: 1,
+                markerStrokeWidth: 1,
+                markerStrokeColor: "#ddd",
+                iconColor: "#fff",
+                iconXOffset: 1,
+                iconYOffset: 0
+            })
         }).addTo(map);
         marker.bindPopup("<strong>" + recArea.areaName + "</strong><br />" +
             recArea.locationDescription);
         markers_searchResults.push(marker);
     }
-    var map = L.map("map-container")
-        .setView([46.50053, -84.299119], 13);
-    L.esri.basemapLayer("Topographic").addTo(map);
+    function setMapBoundsFn() {
+        var latLngBounds;
+        for (var _i = 0, markers_searchResults_2 = markers_searchResults; _i < markers_searchResults_2.length; _i++) {
+            var marker = markers_searchResults_2[_i];
+            if (latLngBounds) {
+                latLngBounds.extend(marker.getLatLng());
+            }
+            else {
+                latLngBounds = marker.getLatLng().toBounds(1);
+            }
+        }
+        if (marker_currentLocation) {
+            if (latLngBounds) {
+                latLngBounds.extend(marker_currentLocation.getLatLng());
+            }
+            else {
+                latLngBounds = marker_currentLocation.getLatLng().toBounds(1);
+            }
+        }
+        map.setMaxZoom(16);
+        map.fitBounds(latLngBounds.pad(0.1));
+        map.setMaxZoom(18);
+    }
     var recMapData = exports.recMapData;
     delete exports.recMapData;
     var tagMap = {};
@@ -31,6 +65,7 @@ exports.__esModule = true;
     Object.freeze(tagMap);
     document.getElementById("is-navbar-toggle-button").addEventListener("click", function (clickEvent) {
         clickEvent.preventDefault();
+        clickEvent.currentTarget.classList.toggle("is-active");
         document.getElementById("is-navbar-toggle-section").classList.toggle("is-active");
     });
     var searchStringEle = document.getElementById("is-search-string");
@@ -40,7 +75,6 @@ exports.__esModule = true;
             formEvent.preventDefault();
         }
         clearSearchMarkersFn();
-        var latLngBounds;
         var searchStringPieces = searchStringEle.value.toLowerCase().split(" ");
         for (var _i = 0, _a = recMapData.recAreas; _i < _a.length; _i++) {
             var recArea = _a[_i];
@@ -77,22 +111,55 @@ exports.__esModule = true;
                 continue;
             }
             createAndAddSearchMarkerFn(recArea);
-            if (markers_searchResults.length === 1) {
-                latLngBounds = L.latLngBounds([recArea.geocoordinates]);
-            }
-            else {
-                latLngBounds.extend(recArea.geocoordinates);
-            }
         }
         if (markers_searchResults.length === 0) {
             document.getElementById("is-no-search-results-modal").classList.add("is-active");
         }
         else {
-            map.fitBounds(latLngBounds.pad(0.05));
+            setMapBoundsFn();
         }
     }
     document.getElementById("is-search-string-form").addEventListener("submit", searchRecAreasFn);
+    document.getElementById("is-search-string-form").addEventListener("reset", function (formEvent) {
+        formEvent.preventDefault();
+        searchStringEle.value = "";
+        searchRecAreasFn(null);
+    });
     searchRecAreasFn(null);
+    if (navigator && navigator.geolocation) {
+        document.getElementById("is-current-location-button").addEventListener("click", function (clickEvent) {
+            clickEvent.preventDefault();
+            if (marker_currentLocation) {
+                marker_currentLocation.remove();
+                marker_currentLocation = null;
+                return;
+            }
+            var successFn = function (position) {
+                marker_currentLocation = L.marker([position.coords.latitude, position.coords.longitude], {
+                    alt: "Current Location",
+                    icon: L.icon.fontAwesome({
+                        iconClasses: "fas fa-smile",
+                        markerColor: "#209cee",
+                        markerFillOpacity: 1,
+                        markerStrokeWidth: 1,
+                        markerStrokeColor: "#ddd",
+                        iconColor: "#fff",
+                        iconXOffset: -1,
+                        iconYOffset: 0
+                    })
+                }).addTo(map);
+                marker_currentLocation.bindPopup("<strong>Current Location</strong>");
+                setMapBoundsFn();
+            };
+            var errorFn = function (positionError) {
+                alert(positionError.message);
+            };
+            navigator.geolocation.getCurrentPosition(successFn, errorFn);
+        });
+    }
+    else {
+        document.getElementById("is-current-location-button").remove();
+    }
     function closeModalFn(clickEvent) {
         clickEvent.preventDefault();
         clickEvent.currentTarget.closest(".modal").classList.remove("is-active");
@@ -108,19 +175,12 @@ exports.__esModule = true;
         var tag = clickEvent.currentTarget.getAttribute("data-tag");
         searchStringEle.value = tag;
         clearSearchMarkersFn();
-        var latLngBounds;
         var taggedRecAreas = tagCloud[tag];
         for (var _i = 0, taggedRecAreas_1 = taggedRecAreas; _i < taggedRecAreas_1.length; _i++) {
             var recArea = taggedRecAreas_1[_i];
             createAndAddSearchMarkerFn(recArea);
-            if (markers_searchResults.length === 1) {
-                latLngBounds = L.latLngBounds([recArea.geocoordinates]);
-            }
-            else {
-                latLngBounds.extend(recArea.geocoordinates);
-            }
         }
-        map.fitBounds(latLngBounds.pad(0.05));
+        setMapBoundsFn();
     }
     {
         var maxTagUsage = 0;

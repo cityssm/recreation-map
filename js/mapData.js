@@ -175,7 +175,7 @@ exports.recMapData = {
         }, {
             areaName: "James Lyons Park",
             locationDescription: "John Street at Elm Avenue.",
-            geocoordinates: [46.533246, -84.338926],
+            geocoordinates: [46.53366116, -84.3408287],
             tags: ["playground"]
         }, {
             areaName: "John Rowswell Park",
@@ -316,6 +316,107 @@ exports.recMapData = {
             locationDescription: "Elizabeth Street at McMeeken Street",
             geocoordinates: [46.50795, -84.29988],
             tags: ["baseball", "cricket", "outdoor-rink", "playground", "soccer", "track"]
+        }, {
+            areaName: "Retta Park",
+            locationDescription: "Retta Street and Glenholme Drive",
+            geocoordinates: [46.5078, -84.292998],
+            tags: ["playground"]
+        }, {
+            areaName: "Roberta Bondar Park",
+            locationDescription: "Foster Drive",
+            geocoordinates: [46.5086609, -84.3390167],
+            tags: []
+        }, {
+            areaName: "Rosedale Park",
+            locationDescription: "Chapple Street and Marwayne Avenue",
+            geocoordinates: [46.524919, -84.313353],
+            tags: ["playground", "ultimate-frisbee"]
+        }, {
+            areaName: "Rosita Park",
+            locationDescription: "Rosita Street at Ellis Road",
+            geocoordinates: [46.53188, -84.404525],
+            tags: ["playground"]
+        }, {
+            areaName: "Ruth Street Park",
+            locationDescription: "Ruth Street at dead end off Moody Street",
+            geocoordinates: [46.535937, -84.355523],
+            tags: ["playground"]
+        }, {
+            areaName: "Snowdon Park",
+            locationDescription: "Shannon Road at Florwin Drive",
+            geocoordinates: [46.502301, -84.28457],
+            tags: ["pickleball", "playground", "tennis"]
+        }, {
+            areaName: "St. Patrick Park",
+            areaDescriptionHTML: "Passive recreation area.",
+            locationDescription: "St. Patrick Street across Holden Street",
+            geocoordinates: [46.547021, -84.34837],
+            tags: ["playground"]
+        }, {
+            areaName: "Strathclair Park",
+            locationDescription: "Second Line East at Black Road",
+            geocoordinates: [46.542908, -84.294462],
+            tags: ["baseball", "dog-park", "soccer"]
+        }, {
+            areaName: "Sunrise Ridge Park",
+            locationDescription: "Park Place Court at Lake Street",
+            geocoordinates: [46.52441, -84.2926],
+            tags: ["playground"]
+        }, {
+            areaName: "Superior Park",
+            locationDescription: "Superior Drive at Niagara Drive",
+            geocoordinates: [46.541688, -84.331281],
+            tags: ["playground"]
+        }, {
+            areaName: "Sussex Park",
+            locationDescription: "Sussex Road east of Korah Road",
+            geocoordinates: [46.540028, -84.366244],
+            tags: ["playground"]
+        }, {
+            areaName: "Sutton Park",
+            locationDescription: "Off Sutton Place, off Bristol Place, off Heath Road, off Texas Avenue",
+            geocoordinates: [46.513264, -84.277639],
+            tags: ["playground", "tennis"]
+        }, {
+            areaName: "Upton Park",
+            locationDescription: "Upton Road at The Drive",
+            geocoordinates: [46.511744, -84.31153],
+            tags: ["playground"]
+        }, {
+            areaName: "Victoria Park",
+            locationDescription: "Victoria Avenue between Upton Road and McGregor Avenue, off Edward Street",
+            geocoordinates: [46.507794, -84.310893],
+            tags: ["playground"]
+        }, {
+            areaName: "Westwood Park",
+            locationDescription: "Newcastle Drive at Westgate Drive",
+            geocoordinates: [46.542411, -84.38639],
+            tags: ["playground"]
+        }, {
+            areaName: "Wilcox Park",
+            locationDescription: "Wilcox Avenue between Spruce Street and Maple Street",
+            geocoordinates: [46.522091, -84.334537],
+            tags: ["playground", "tennis"]
+        }, {
+            areaName: "William Merrifield Park",
+            locationDescription: "Patrick Street",
+            geocoordinates: [46.533093, -84.354075],
+            tags: ["outdoor-rink", "pickleball", "tennis"]
+        }, {
+            areaName: "Windsor Farms Park",
+            locationDescription: "52 Foxborough Trail",
+            geocoordinates: [46.5484617, -84.305749],
+            tags: []
+        }, {
+            areaName: "Winfield Park",
+            locationDescription: "Winfield Drive at Arbor Drive at Alpine Street",
+            geocoordinates: [46.538845, -84.39206],
+            tags: ["playground"]
+        }, {
+            areaName: "Wishart Park",
+            locationDescription: "Fourth Line East",
+            geocoordinates: [46.5676976, -84.2995732],
+            tags: []
         }
     ],
     tags: [
