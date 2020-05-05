@@ -12,7 +12,7 @@ declare const exports: any;
   const map = L.map("map-container")
     .setView([46.50053, -84.299119], 13);
 
-  map.setMaxZoom(17);
+  map.setMaxZoom(18);
 
   L.esri.basemapLayer("Topographic").addTo(map);
 
@@ -49,8 +49,15 @@ declare const exports: any;
       })
     }).addTo(map);
 
-    marker.bindPopup("<strong>" + recArea.areaName + "</strong><br />" +
-      recArea.locationDescription);
+    let tagsHTML = "";
+
+    for (let tagIndex = 0; tagIndex < recArea.tags.length; tagIndex += 1) {
+      tagsHTML += "<span class=\"tag\">" + recArea.tags[tagIndex] + "</span>";
+    }
+
+    marker.bindPopup("<strong class=\"is-size-6\">" + recArea.areaName + "</strong><br />" +
+      recArea.locationDescription +
+      (recArea.tags.length > 0 ? "<hr /><div class=\"tags\">" + tagsHTML + "</div>" : ""));
 
     markers_searchResults.push(marker);
 
@@ -195,9 +202,11 @@ declare const exports: any;
     }
   }
 
-  document.getElementById("is-search-string-form").addEventListener("submit", searchRecAreasFn);
+  const searchFormEle = document.getElementById("is-search-string-form");
 
-  document.getElementById("is-search-string-form").addEventListener("reset", function(formEvent) {
+  searchFormEle.addEventListener("submit", searchRecAreasFn);
+
+  searchFormEle.addEventListener("reset", function(formEvent) {
     formEvent.preventDefault();
     searchStringEle.value = "";
     searchRecAreasFn(null);
@@ -271,11 +280,16 @@ declare const exports: any;
     (<HTMLButtonElement>clickEvent.currentTarget).closest(".modal").classList.remove("is-active");
   }
 
-  const modalCloseButtonEles = document.getElementsByClassName("modal-close");
+  const modalCloseButtonEles = document.getElementsByClassName("is-modal-close-button");
 
   for (let buttonIndex = 0; buttonIndex < modalCloseButtonEles.length; buttonIndex += 1) {
     modalCloseButtonEles[buttonIndex].addEventListener("click", closeModalFn);
   }
+
+  document.getElementById("is-about-toggle-button").addEventListener("click", function(clickEvent) {
+    clickEvent.preventDefault();
+    document.getElementById("is-about-modal").classList.add("is-active");
+  });
 
 
   /*

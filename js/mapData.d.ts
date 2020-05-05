@@ -9,6 +9,7 @@ export declare type RecreationArea = {
     geocoordinates: [number, number];
     tags: string[];
     keywords?: string;
+    websites?: WebsiteData[];
 };
 export declare type TagData = {
     tag: string;
@@ -17,5 +18,9 @@ export declare type TagData = {
     hexColor?: string;
     iconClass?: string;
     keywords?: string;
+};
+export declare type WebsiteData = {
+    websiteTitle: string;
+    websiteUrl: string;
 };
 export declare const recMapData: RecreationData;

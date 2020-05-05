@@ -3,7 +3,7 @@ exports.__esModule = true;
 (function () {
     var map = L.map("map-container")
         .setView([46.50053, -84.299119], 13);
-    map.setMaxZoom(17);
+    map.setMaxZoom(18);
     L.esri.basemapLayer("Topographic").addTo(map);
     var marker_currentLocation;
     var markers_searchResults = [];
@@ -28,8 +28,13 @@ exports.__esModule = true;
                 iconYOffset: 0
             })
         }).addTo(map);
-        marker.bindPopup("<strong>" + recArea.areaName + "</strong><br />" +
-            recArea.locationDescription);
+        var tagsHTML = "";
+        for (var tagIndex = 0; tagIndex < recArea.tags.length; tagIndex += 1) {
+            tagsHTML += "<span class=\"tag\">" + recArea.tags[tagIndex] + "</span>";
+        }
+        marker.bindPopup("<strong class=\"is-size-6\">" + recArea.areaName + "</strong><br />" +
+            recArea.locationDescription +
+            (recArea.tags.length > 0 ? "<hr /><div class=\"tags\">" + tagsHTML + "</div>" : ""));
         markers_searchResults.push(marker);
     }
     function setMapBoundsFn() {
@@ -119,8 +124,9 @@ exports.__esModule = true;
             setMapBoundsFn();
         }
     }
-    document.getElementById("is-search-string-form").addEventListener("submit", searchRecAreasFn);
-    document.getElementById("is-search-string-form").addEventListener("reset", function (formEvent) {
+    var searchFormEle = document.getElementById("is-search-string-form");
+    searchFormEle.addEventListener("submit", searchRecAreasFn);
+    searchFormEle.addEventListener("reset", function (formEvent) {
         formEvent.preventDefault();
         searchStringEle.value = "";
         searchRecAreasFn(null);
@@ -164,10 +170,14 @@ exports.__esModule = true;
         clickEvent.preventDefault();
         clickEvent.currentTarget.closest(".modal").classList.remove("is-active");
     }
-    var modalCloseButtonEles = document.getElementsByClassName("modal-close");
+    var modalCloseButtonEles = document.getElementsByClassName("is-modal-close-button");
     for (var buttonIndex = 0; buttonIndex < modalCloseButtonEles.length; buttonIndex += 1) {
         modalCloseButtonEles[buttonIndex].addEventListener("click", closeModalFn);
     }
+    document.getElementById("is-about-toggle-button").addEventListener("click", function (clickEvent) {
+        clickEvent.preventDefault();
+        document.getElementById("is-about-modal").classList.add("is-active");
+    });
     var tagCloud = {};
     function showRecAreasByTagFn(clickEvent) {
         clickEvent.preventDefault();

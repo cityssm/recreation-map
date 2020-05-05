@@ -288,7 +288,11 @@ exports.recMapData = {
             areaName: "Penhorwood Park",
             locationDescription: "Pine Street at Macdonald Avenue",
             geocoordinates: [46.516396, -84.30893],
-            tags: ["baseball", "disc-golf", "playground", "tennis"]
+            tags: ["baseball", "disc-golf", "playground", "tennis"],
+            websites: [{
+                    websiteTitle: "Disc Golf  Cource Map and Scorecard",
+                    websiteUrl: "https://saultstemarie.ca/City-Hall/City-Departments/Community-Development-Enterprise-Services/Community-Services/Recreation-and-Culture/Disc-Golf.aspx"
+                }]
         }, {
             areaName: "Pointe Des Chenes Beach and Campground",
             locationDescription: "Des Chenes Drive at Nokomis Beach Road",
@@ -315,7 +319,7 @@ exports.recMapData = {
             areaName: "Queen Elizabeth Park",
             locationDescription: "Elizabeth Street at McMeeken Street",
             geocoordinates: [46.50795, -84.29988],
-            tags: ["baseball", "cricket", "outdoor-rink", "playground", "soccer", "track"]
+            tags: ["baseball", "cricket", "football", "outdoor-rink", "playground", "soccer", "track"]
         }, {
             areaName: "Retta Park",
             locationDescription: "Retta Street and Glenholme Drive",

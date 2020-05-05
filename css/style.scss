@@ -15,12 +15,32 @@ html {
   height: calc(100vh - 56px);
 }
 
+.leaflet-container {
+  font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.leaflet-popup-content .tags {
+  justify-content: center;
+}
+
 .modal {
   z-index: 3;
+}
+
+.modal-card-title {
+  flex-shrink: 1;
+}
+
+.modal-card-foot {
+  justify-content: flex-end;
 }
 
 #is-tag-cloud-container {
   justify-content: center;
   padding: 20px;
   overflow: auto;
+}
+
+hr {
+  margin: 0.5rem 0;
 }

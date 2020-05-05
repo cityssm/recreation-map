@@ -20,10 +20,10 @@
 
   <nav class="navbar is-dark" role="navigation">
     <div class="navbar-brand">
-      <div class="navbar-item">
+      <a class="navbar-item" id="is-about-toggle-button" href="#">
         City of Sault Ste. Marie Recreation Areas
-      </div>
-      <a class="navbar-burger is-active" id="is-navbar-toggle-button" role="button" aria-label="menu" aria-expanded="false">
+      </a>
+      <a class="navbar-burger is-active" id="is-navbar-toggle-button" role="button" aria-label="menu" aria-expanded="true">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -47,7 +47,7 @@
               </div>
               <div class="control">
                 <button class="button is-info" type="reset">
-                  Show All
+                  Clear
                 </button>
               </div>
             </div>
@@ -69,30 +69,77 @@
 
   <main id="map-container" role="main"></main>
 
-  <div class="modal" id="is-tag-browser-modal">
+  <article class="modal" id="is-area-view-modal">
     <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="has-background-white" style="overflow:auto">
-        <div class="tags is-marginless" id="is-tag-cloud-container"></div>
-      </div>
+    <div class="modal-card">
+      <header class="modal-card-head has-background-info">
+        <h2 class="modal-card-title has-text-white"></h2>
+        <button class="delete is-modal-close-button" type="button" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body"></section>
+      <footer class="modal-card-foot">
+        <button class="button is-modal-close-button" type="button">Close</button>
+      </footer>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div>
+  </article>
 
   <div class="modal" id="is-no-search-results-modal">
     <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="message is-info">
-        <header class="message-header">
-          No Search Results
-        </header>
-        <section class="message-body">
-          Try searching for something else.
-        </section>
-      </div>
+    <div class="modal-card">
+      <header class="modal-card-head has-background-info">
+        <h2 class="modal-card-title has-text-white">No Search Results Found</h2>
+        <button class="delete is-modal-close-button" type="button" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        Try searching for something else, or using the "Find a Feature" option as a guide.
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-modal-close-button" type="button">Close</button>
+      </footer>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
   </div>
+
+  <div class="modal" id="is-tag-browser-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head has-background-info">
+        <h2 class="modal-card-title has-text-white">Select a Feature</h2>
+        <button class="delete is-modal-close-button" type="button" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="tags is-marginless" id="is-tag-cloud-container"></div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-modal-close-button" type="button">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <article class="modal" id="is-about-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head has-background-info">
+        <h2 class="modal-card-title has-text-white">About the City of Sault Ste. Marie Recreation Area Map</h2>
+        <button class="delete is-modal-close-button" type="button" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <p class="has-text-centered has-text-weight-bold">Get outside!  Get active!</p>
+        <p>
+          <a href="https://saultstemarie.ca/City-Hall/City-Departments/Community-Development-Enterprise-Services/Community-Services/Recreation-and-Culture.aspx" target="_blank">
+            Recreation and Culture Division
+          </a>
+        </p>
+        <p>
+          <a href="https://saultstemarie.ca/City-Hall/City-Departments/Public-Works-Engineering-Services/Public-Works/Service-Requests.aspx" target="_blank">
+            Submit a Service Request
+          </a>
+        </p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-modal-close-button" type="button">Close</button>
+      </footer>
+    </div>
+  </article>
 
   <script>
     window.exports = window.exports || {};
